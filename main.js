@@ -109,7 +109,7 @@ var bds = [
       "La route d'Armilia raconte le voyage de deux enfants en dirigeable, de MYLOS à ARMILIA. Le jeune Ferdinand doit apporter au professeur Pym, dans le Grand Nord, la formule capable de remettre en route les rouages du TEMPS. Le long voyage des deux enfants leur fait affronter les périls les plus divers et leur permet de survoler des villes comme BRÜSEL, Genova ou Kobenhavn, et de croiser le Vaisseau du désert du malheureux WAPPENDORF.Mais sommes-nous bien sûr que ce voyage se déroule réellement ? Ne serait-ce pas plutôt à l'intérieur d'une usine de Mylos que Ferdinand, lecteur passionné de livres interdits, a rêvé toute cette histoire ?",
     type: 'bd',
     etat: 'bon',
-    image: "la_route_d'amilia.jpg",
+    image: 'la_route_d_armilia.jpg',
     isbn: 2203343036,
     annee_de_parution: 1988,
     no_tome: 4,
@@ -359,27 +359,26 @@ for (var el of bds) {
   // separateur
   var ligneSeparatrice = document.createElement('hr');
   bd.append(ligneSeparatrice);
-
-  //* ************************************ EVENTS ****************************** *//
-
-  // Afficher résumé complet
-  var tousLesBtnLireSuite = document.querySelectorAll('.btnLireSuite_cl');
-  for (const btn of tousLesBtnLireSuite) {
-    btn.addEventListener('click', function () {
-      var shortResume = this.parentNode.querySelector('.shortResume_cl');
-      var resumeComplet = this.parentNode.querySelector('.resumeComplet_cl');
-      if (resumeComplet.style.display === 'none') {
-        console.log('toto');
-        shortResume.style.display = 'none';
-        resumeComplet.style.display = 'block';
-        this.innerHTML = 'Réduire';
-      } else {
-        shortResume.style.display = 'block';
-        resumeComplet.style.display = 'none';
-        this.innerHTML = 'Lire la suite';
-      }
-    });
-  }
-
-  // Emprunter et ajouter au panier
 }
+
+//* ************************************ EVENTS ****************************** *//
+
+// Afficher résumé complet
+var tousLesBtnLireSuite = document.querySelectorAll('.btnLireSuite_cl');
+for (const btn of tousLesBtnLireSuite) {
+  btn.addEventListener('click', function () {
+    var shortResume = this.parentNode.querySelector('.shortResume_cl');
+    var resumeComplet = this.parentNode.querySelector('.resumeComplet_cl');
+    if (resumeComplet.style.display !== 'block') {
+      shortResume.style.display = 'none';
+      resumeComplet.style.display = 'block';
+      this.innerHTML = 'Réduire';
+    } else {
+      shortResume.style.display = 'block';
+      resumeComplet.style.display = 'none';
+      this.innerHTML = 'Lire la suite';
+    }
+  });
+}
+
+// Emprunter et ajouter au panier
